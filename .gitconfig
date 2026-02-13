@@ -1,0 +1,46 @@
+[user]
+	name = eysenshi
+	email = eysen.shi@gmail.com
+[diff]
+	tool = vscode
+[difftool "sdvdiff"]
+	cmd = sdvdiff.exe \"$LOCAL\" \"$REMOTE\"
+[difftool "vscode"]
+	cmd = code-insiders --wait --diff \"$LOCAL\" \"$REMOTE\"
+[core]
+	editor = code --new-window --wait
+[alias]
+	ls = log --pretty=format:"%C(yellow)%h\\ %Cgreen%cn%Cred%d\\ %Creset%s" --decorate
+	ll = log --pretty=format:"%C(yellow)%h\\ %Cgreen%cn%Cred%d\\ %Creset%s" --decorate --numstat
+	ld = log --pretty=format:"%C(yellow)%h\\ [%cr]%Cgreen%cn%Cred%d\\ %Creset%s" --decorate
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	cp = cherry-pick
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	type = 'cat-file
+	dump = 'cat-file
+	fl = log -u
+	dl = "!git ll -1"
+	dlc = diff --cached HEAD^
+	la = "!git config -l | grep alias | cut -c 7-"
+	cfi = config --global -e
+	
+[remote "origin"]
+	prune = true
+[credential]
+	helper = osxkeychain
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pager]
+	log = false
+	branch = false
+[pull]
+	ff = only
